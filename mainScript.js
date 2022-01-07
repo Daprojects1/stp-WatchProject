@@ -1,7 +1,7 @@
 let startBtn = document.querySelector(".startbtn")
 let mainScreen = document.querySelector(".mainScreen")
 let stopBtn = document.querySelector(".stopbtn")
-
+let clearBtn = document.querySelector(".clearbtn")
 
 // variables to hold time values
 
@@ -10,9 +10,9 @@ let stopBtn = document.querySelector(".stopbtn")
 //     miniute :00,
 //     hours:00
 // }
-   let storedTime = 00;
-   let miniute = 00;
-   let hours = 00;
+   let storedTime = 0;
+   let miniute = 0;
+   let hours = 0;
 
 // our Timeincrement function in seconds 
 let incSeconds = ()=> {
@@ -55,28 +55,36 @@ let secsPlaceBo = 0;
 let minsPlacebo = 0;
 let hoursPlacebo=0;
 
-// function allows us to display the change & furthe down, this is being diplayed every 450ms so our values adjust.
+// function allows us to display the change & further down, this is being diplayed every 750ms so our values adjust.
 let display = ()=> {
   placeboCheck();
   mainScreen.innerHTML= "<h1>"+hoursPlacebo+hours+":"+minsPlacebo+miniute+":"+secsPlaceBo+storedTime+"</h1>";
-
+  incSeconds();
 } 
 
-let increaseSec = ()=> {
-    setInterval(incSeconds, 1150);
+// let increaseSec = ()=> {
+//     setInterval(incSeconds, 1500);
+// }
+
+let displayShow= ()=> {
     setInterval(display, 1000)
 }
 
-let addEventi = ()=> {
-   startBtn.addEventListener("click", increaseSec, {once: true});
-}
 
-addEventi();
+ startBtn.addEventListener("click", displayShow, {once: true});
+
 
 let pauseFunc = ()=> {
-    startBtn.removeEventListener("click",addEventi)
-    placeboCheck();
-  mainScreen.innerHTML= "<h1>"+hoursPlacebo+hours+":"+minsPlacebo+miniute+":"+secsPlaceBo+storedTime+"</h1>";
+    startBtn.removeEventListener("click",displayShow, {once:true})
 }
 
-stopBtn.addEventListener("click", pauseFunc, {once: true})
+
+
+let clearFunc = ()=> {
+    startBtn.removeEventListener("click",displayShow)
+    mainScreen.innerHTML= "";
+}
+
+stopBtn.addEventListener("click", pauseFunc)
+
+clearBtn.addEventListener("click", clearFunc)
