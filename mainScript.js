@@ -67,24 +67,25 @@ let display = ()=> {
 // }
 
 let displayShow= ()=> {
-    setInterval(display, 1000)
+   let newInt = setInterval(display, 1000)
+   stopBtn.addEventListener("click", ()=> {
+       clearInterval(newInt)
+   })
+   clearBtn.addEventListener("click", ()=> {
+       clearInterval(newInt);
+        storedTime = 0;
+        miniute = 0;
+        hours = 0;
+    
+       mainScreen.innerHTML= "<h1>"+"00:00:00"+"<h1>"
+   })
 }
 
 
- startBtn.addEventListener("click", displayShow, {once: true});
+ startBtn.addEventListener("click", displayShow);
 
-
-let pauseFunc = ()=> {
-    startBtn.removeEventListener("click",displayShow, {once:true})
-}
-
-
-
-let clearFunc = ()=> {
-    startBtn.removeEventListener("click",displayShow)
-    mainScreen.innerHTML= "";
-}
-
-stopBtn.addEventListener("click", pauseFunc)
+ stopBtn.addEventListener("click", ()=> {
+     clearInterval(display)
+ })
 
 clearBtn.addEventListener("click", clearFunc)

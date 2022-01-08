@@ -46,3 +46,7 @@ body{
     background-color: rgb(199, 136, 78);
      color: rgb(33, 53, 23);
 }
+
+.cheese {
+    display: none;
+}
