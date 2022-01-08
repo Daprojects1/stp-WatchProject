@@ -76,7 +76,6 @@ let displayShow= ()=> {
         storedTime = 0;
         miniute = 0;
         hours = 0;
-    
        mainScreen.innerHTML= "<h1>"+"00:00:00"+"<h1>"
    })
 }
@@ -84,8 +83,3 @@ let displayShow= ()=> {
 
  startBtn.addEventListener("click", displayShow);
 
- stopBtn.addEventListener("click", ()=> {
-     clearInterval(display)
- })
-
-clearBtn.addEventListener("click", clearFunc)
