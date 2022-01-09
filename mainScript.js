@@ -64,19 +64,18 @@ let display = ()=> {
 let displayShow= ()=> {
      clearInterval(newInt)
      newInt = setInterval(display, 1000)
-     stopBtn.addEventListener("click", ()=> {
-       clearInterval(newInt)
-   })
-   clearBtn.addEventListener("click", ()=> {
-       clearInterval(newInt);
-        storedTime = 0;
-        miniute = 0;
-        hours = 0;
-       mainScreen.innerHTML= "<h1>"+"00:00:00"+"<h1>"
-   })
 }
 
 // event listners for the start btn.  
 startBtn.addEventListener("click", displayShow);
 
-
+stopBtn.addEventListener("click", ()=> {
+    clearInterval(newInt)
+})
+clearBtn.addEventListener("click", ()=> {
+    clearInterval(newInt);
+     storedTime = 0;
+     miniute = 0;
+     hours = 0;
+    mainScreen.innerHTML= "<h1>"+"00:00:00"+"<h1>"
+})
